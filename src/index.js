@@ -1,6 +1,12 @@
-import ReactDOM from "react-dom";
+const express = require('express');
+const app = express();
+const path = require('path');
 
-import App from "./components/App.jsx";
+app.use(express.static(path.join(__dirname, '/public')));
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+app.get('/api/cows', (req, res) => {
+  res.send('Hi!')
+})
+
+app.listen(8080, () => console.log('Server ready'));
