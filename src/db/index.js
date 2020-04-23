@@ -16,7 +16,9 @@ const Cow = sequelize.define('Cow', {
   }
 })
 
-Cow.sync();
+// Cow.sync();
+
+exports.Cow = Cow;
 
 // let test = Cow.create({name: 'test', description: 'desc'})
 
