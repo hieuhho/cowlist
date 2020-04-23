@@ -9,11 +9,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-      cows: []
+      cows: [],
+      cowInfo: ''
     };
 
     this.getCows = this.getCows.bind(this);
     this.postCows = this.postCows.bind(this);
+    this.descriptionHandler = this.descriptionHandler.bind(this);
   }
 
   componentDidMount() {
@@ -48,20 +50,30 @@ class App extends Component {
         })
       })
     })
+  };
+
+  descriptionHandler(cow) {
+    this.setState({
+      cowInfo: cow
+    })
   }
 
 
   render() {
     return (
       <div>
-        <h1>FROM REACT</h1>
+        <h1>Hieu's Barn Presents</h1>
+
+        <div className="description"> {this.state.cowInfo}
+
+        </div>
 
         <div>
           <Post handlePost={this.postCows} />
           </div>
 
           <div>
-            <List cowList={this.state.cows} />
+            <List cowList={this.state.cows} description={(cow) => this.descriptionHandler(cow)} />
           </div>
 
       </div>

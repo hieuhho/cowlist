@@ -16,21 +16,10 @@ const Cow = sequelize.define('Cow', {
   }
 })
 
-// Cow.sync();
+Cow.sync();
 
-
-let saveCow = function(cow) {
-  Cow.create(cow);
-}
-
-let getCows = function() {
-  Cow.findAll()
-}
 
 exports.Cow = Cow;
-exports.saveCow = saveCow;
-exports.getCows = getCows;
-
 
 
 // let test = Cow.create({name: 'test', description: 'desc'})
