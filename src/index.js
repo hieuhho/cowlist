@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('./db/index')
 
-app.use(express.static(path.join(__dirname, '/dist')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
