@@ -18,7 +18,7 @@ app.get('/api/cows', (req, res) => {
     .catch((err) => {
       res.end(err)
     })
-})
+});
 
 app.post('/api/cows', (req,res) => {
   db.Cow.create(req.body.post)
@@ -30,7 +30,7 @@ app.post('/api/cows', (req,res) => {
     .catch((err) => {
       res.end(err)
     })
-})
+});
 
 let port = process.env.PORT || 8080;
 

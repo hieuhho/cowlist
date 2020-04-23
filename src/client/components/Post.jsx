@@ -15,8 +15,10 @@ class Post extends Component {
   handleChange(propertyName, event) {
     const cowInfo = this.state.cowInfo;
     cowInfo[propertyName] = event.target.value;
-    this.setState({ cowInfo: cowInfo });
-  }
+    this.setState({
+      cowInfo: cowInfo
+    });
+  };
 
   handleCowSubmit(e) {
     e.preventDefault();
@@ -29,7 +31,7 @@ class Post extends Component {
         description: ''
         }
     })
-  }
+  };
 
 
   render() {
@@ -55,8 +57,8 @@ class Post extends Component {
             value={this.state.cowInfo.description}
             onChange={this.handleChange.bind(this,'description')} />
 
-          <button className="cowSubmit" onClick={this.handleCowSubmit.bind(this)}>add yo cow</button>
         </label>
+          <button className="cowSubmit" onClick={this.handleCowSubmit.bind(this)}>add yo cow</button>
 
       </form>
 
