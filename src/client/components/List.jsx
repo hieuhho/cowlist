@@ -7,7 +7,7 @@ const List = (props) => (
     </h2>
       <ul>
         {props.cowList.map((cow) => {
-          return <li key={cow.name} onClick={() => props.description(`${cow.name}: ${cow.description}`)} >
+          return <li key={cow.id} onClick={() => props.description(`${cow.name}: ${cow.description}`)} >
             {cow.name}
             </li>
         })}
