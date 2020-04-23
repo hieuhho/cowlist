@@ -26,7 +26,6 @@ app.get('/api/cows', (req, res) => {
 app.post('/api/cows', (req,res) => {
   db.Cow.create(req.body.post)
     .then((cow) => {
-      console.log('cow: ', cow);
       res.status(200)
       res.send(cow)
       res.end()
@@ -42,13 +41,13 @@ app.put('/api/cows/:id', (req, res) => {
 
   cowID = path.basename(req.url);
 
-  db.Cow.update(req.body , {
+  db.Cow.update(req.body.post , {
     where: {
       id: cowID
     }
   })
   .then(() => {
-    console.log(`${req.body.name} feels different`)
+    console.log(`${req.body.post.name} feels different`)
     return db.Cow.findAll()
   })
   .then((cows) => {
@@ -63,6 +62,7 @@ app.put('/api/cows/:id', (req, res) => {
 });
 
 app.delete('/api/cows/:id', (req, res) => {
+  console.log('req: ', req);
   cowID = path.basename(req.url);
   console.log('cowID: ', cowID);
 
@@ -73,7 +73,11 @@ app.delete('/api/cows/:id', (req, res) => {
   })
   .then(() => {
     console.log('Chik-Fil-A\'s stocks plummeted')
+    return db.Cow.findAll()
+  })
+  .then((cows) => {
     res.status(200)
+    res.send(cows)
     res.end()
   })
   .catch((err) => {

@@ -16,6 +16,8 @@ class App extends Component {
     this.getCows = this.getCows.bind(this);
     this.postCows = this.postCows.bind(this);
     this.descriptionHandler = this.descriptionHandler.bind(this);
+    this.updateCow = this.updateCow.bind(this);
+    this.deleteCow = this.deleteCow.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +54,46 @@ class App extends Component {
     })
   };
 
+  updateCow(id) {
+
+    let newName = prompt('rename dis cow');
+    let newDescription = prompt('say sumthin bout ur cow');
+    let cowData = { name: newName, description: newDescription};
+
+    if (cowData.name && cowData.description) {
+      $.ajax({
+        url: `api/cows/${id}`,
+        type: 'PUT',
+        data: {post: cowData},
+        error: ((err) => {
+          return console.error('AJAX PUT FAILED',err)
+        }),
+        success: ((cow) => {
+          this.setState({
+            cows: cow,
+            cowInfo: ''
+          })
+        })
+      })
+    }
+  };
+
+  deleteCow(id) {
+    $.ajax({
+      url: `api/cows/${id}`,
+      type: 'DELETE',
+      error: ((err) => {
+        return console.error('AJAX DELETE FAILED!!!', err)
+      }),
+      success: ((cow) => {
+        this.setState({
+          cows: cow,
+          cowInfo: ''
+        })
+      })
+    })
+  };
+
   descriptionHandler(cow) {
     this.setState({
       cowInfo: cow
@@ -73,7 +115,10 @@ class App extends Component {
           </div>
 
           <div>
-            <List cowList={this.state.cows} description={(cow) => this.descriptionHandler(cow)} />
+            <List cowList={this.state.cows}
+                  description={(cow) => this.descriptionHandler(cow)}
+                  update={(id) => this.updateCow(id)}
+                  delete={(id) => this.deleteCow(id)}/>
           </div>
 
       </div>
