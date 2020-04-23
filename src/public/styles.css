@@ -22,6 +22,7 @@ body {
   height: 100%;
   background-color: white;
   padding: 25px;
+  box-shadow: 0 0 75px black;
 }
 
 form {
@@ -35,7 +36,9 @@ li {
   color: gray;
   background-color: whitesmoke;
   padding: 10px;
-  margin: 5px;
+  margin: 10px;
+  box-shadow: 0 0 5px gray;
+
 }
 
 .buttons {
