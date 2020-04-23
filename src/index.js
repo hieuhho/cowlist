@@ -32,4 +32,6 @@ app.post('/api/cows', (req,res) => {
     })
 })
 
-app.listen(8080, () => console.log('Server ready'));
+let port = process.env.PORT || 8080;
+
+app.listen(port, () => console.log('Server ready'));
