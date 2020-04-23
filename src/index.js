@@ -6,17 +6,30 @@ const db = require('./db/index')
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.urlencoded());
+// app.use(express.json());
 
 app.get('/api/cows', (req, res) => {
-  res.send('COW GET!')
-  // return db.Cow.findAll();
+  db.Cow.findAll()
+    .then((cows) => {
+      res.status(200)
+      res.send(cows)
+      res.end()
+    })
+    .catch((err) => {
+      res.end(err)
+    })
 })
 
 app.post('/api/cows', (req,res) => {
-  // req.body ({name: 'Milkshake', description: '...'} )
-  // res.body({name: 'Milkshake', description: '...'})
-  // add to database
-  res.send('POST COWS')
+  db.Cow.create(req.body.post)
+    .then((cow) => {
+      res.status(200)
+      res.send(cow)
+      res.end()
+    })
+    .catch((err) => {
+      res.end(err)
+    })
 })
 
 app.listen(8080, () => console.log('Server ready'));

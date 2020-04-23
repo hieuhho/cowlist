@@ -18,8 +18,15 @@ class Post extends Component {
     this.setState({ cowInfo: cowInfo });
   }
 
-  handleCowSubmit() {
+  handleCowSubmit(e) {
+    e.preventDefault();
     this.props.handlePost(this.state.cowInfo);
+    this.setState({
+      cowInfo: {
+        name: '',
+        description: ''
+      }
+    })
   }
 
 
@@ -33,6 +40,7 @@ class Post extends Component {
         <label className="cowName">
           Name:
           <input
+            placeholder="name this cow"
             type="text"
             name="name"
             value={this.state.cowInfo.name}
@@ -42,13 +50,15 @@ class Post extends Component {
         <label className="cowDesc">
           Description:
           <input
+            placeholder="describe your cow"
             type="text"
             name="description"
             value={this.state.cowInfo.description}
             onChange={this.handleChange.bind(this,'description')} />
-        </label>
 
           <button className="cowSubmit" onClick={this.handleCowSubmit.bind(this)}>Submit Cow</button>
+        </label>
+
       </form>
 
     </div>
