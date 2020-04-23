@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode development --w",
-    "dev": "nodemon src/index.js",
-    "start": "nodemon src/index.js -i src/client -i src/db",
+    "dev": "nodemon src/index.js -i src/client -i src/db",
+    "start": "nodemon src/index.js",
     "heroku-post-build": "webpack -p"
   },
   "repository": {
