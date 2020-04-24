@@ -81,7 +81,7 @@ class App extends Component {
 
   deleteCow(id) {
 
-    let randomString = Math.random().toString(36).slice(2);
+    let randomString = Math.random().toString(36).toUpperCase().slice(2);
 
     let confirm = prompt(`do you want steak? enter "${randomString}" to kill`);
 
