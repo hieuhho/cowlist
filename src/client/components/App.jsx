@@ -79,19 +79,28 @@ class App extends Component {
   };
 
   deleteCow(id) {
-    $.ajax({
-      url: `api/cows/${id}`,
-      type: 'DELETE',
-      error: ((err) => {
-        return console.error('AJAX DELETE FAILED!!!', err)
-      }),
-      success: ((cow) => {
-        this.setState({
-          cows: cow,
-          cowInfo: ''
+
+    let confirm = prompt('do you want steak? enter "kill dis cow" to kill');
+
+    const verified = "kill dis cow";
+
+    if (verified === confirm) {
+      $.ajax({
+        url: `api/cows/${id}`,
+        type: 'DELETE',
+        error: ((err) => {
+          return console.error('AJAX DELETE FAILED!!!', err)
+        }),
+        success: ((cow) => {
+          this.setState({
+            cows: cow,
+            cowInfo: ''
+          })
         })
       })
-    })
+    } else {
+      alert('can\'t kill dis cow! it\'s too stronk!!!')
+    }
   };
 
   descriptionHandler(cow) {

@@ -86,6 +86,6 @@ app.delete('/api/cows/:id', (req, res) => {
   })
 });
 
-let port = process.env.PORT || 8080;
+let port = 1234;
 
 app.listen(port, () => console.log('Server ready'));
