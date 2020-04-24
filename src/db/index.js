@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
 const { DataTypes } = require("sequelize");
 
-const sequelize = new Sequelize('cowList', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql'
-});
+// const sequelize = new Sequelize('cowList', 'root', '', {
+//   host: 'localhost',
+//   dialect: 'mysql'
+// });
 
-// const sequelize = new Sequelize(process.env.JAWSDB_MARIA_URL);
+const sequelize = new Sequelize(process.env.JAWSDB_MARIA_URL);
 
 const Cow = sequelize.define('Cow', {
   name: {
