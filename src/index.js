@@ -31,23 +31,19 @@ app.post('/api/cows', (req,res) => {
       res.end()
     })
     .catch((err) => {
-      console.log('err: ', err);
       res.status(500)
-      res.end()
+      res.end(err)
     })
 });
 
 app.put('/api/cows/:id', (req, res) => {
-
   cowID = path.basename(req.url);
-
   db.Cow.update(req.body.post , {
     where: {
       id: cowID
     }
   })
   .then(() => {
-    console.log(`${req.body.post.name} feels different`)
     return db.Cow.findAll()
   })
   .then((cows) => {
@@ -62,17 +58,13 @@ app.put('/api/cows/:id', (req, res) => {
 });
 
 app.delete('/api/cows/:id', (req, res) => {
-  console.log('req: ', req);
   cowID = path.basename(req.url);
-  console.log('cowID: ', cowID);
-
   db.Cow.destroy({
     where: {
       id: cowID
     }
   })
   .then(() => {
-    console.log('Chik-Fil-A\'s stocks plummeted')
     return db.Cow.findAll()
   })
   .then((cows) => {

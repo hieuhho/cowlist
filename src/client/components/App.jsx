@@ -69,6 +69,7 @@ class App extends Component {
           return console.error('AJAX PUT FAILED',err)
         }),
         success: ((cow) => {
+          alert(`${newName} feels different`)
           this.setState({
             cows: cow,
             cowInfo: ''
@@ -92,6 +93,7 @@ class App extends Component {
           return console.error('AJAX DELETE FAILED!!!', err)
         }),
         success: ((cow) => {
+          alert('Chik-Fil-A\'s stocks plummeted')
           this.setState({
             cows: cow,
             cowInfo: ''
