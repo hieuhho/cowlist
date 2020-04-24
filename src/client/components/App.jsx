@@ -81,11 +81,11 @@ class App extends Component {
 
   deleteCow(id) {
 
-    let confirm = prompt('do you want steak? enter "kill dis cow" to kill');
+    let randomString = Math.random().toString(36).slice(2);
 
-    const verified = "kill dis cow";
+    let confirm = prompt(`do you want steak? enter "${randomString}" to kill`);
 
-    if (verified === confirm) {
+    if (randomString === confirm) {
       $.ajax({
         url: `api/cows/${id}`,
         type: 'DELETE',
