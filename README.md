@@ -5,7 +5,11 @@ This app allow users to create a cow, and add its description to a database. Thi
 
 This app was created using React to interact with a RESTful API powered by Node.js using an Express server and a MySQL/MariaDB database.
 
- ## Getting Started
+## Preview
+
+A deployed version of the project can be found [here](https://dashboard.heroku.com/apps/hieus-barn).
+
+## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
