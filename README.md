@@ -7,7 +7,7 @@ This app was created using React to interact with a RESTful API powered by Node.
 
 ## Preview
 
-A deployed version of the project can be found [here](https://dashboard.heroku.com/apps/hieus-barn).
+A deployed version of the project can be found [here](https://hieus-barn.herokuapp.com/).
 
 ## Getting Started
 
