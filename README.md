@@ -50,7 +50,7 @@ npm run dev-build
 
 ## Deployment
 
-This app was deployed using [Heroku](https://dashboard.heroku.com/).
+This app was deployed using [Heroku](https://dashboard.heroku.com/)
 
 ## Authors
 
