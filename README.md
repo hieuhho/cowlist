@@ -30,6 +30,18 @@ npm install
 
 To install MySQL, please follow these [instructions](https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html)
 
+### Start Server
+
+```
+npm start
+```
+
+### Start Webpack
+
+```
+npm run dev-build
+```
+
 ## Built With
 
 * [node.js](https://nodejs.org/en/)
