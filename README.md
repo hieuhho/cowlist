@@ -48,6 +48,10 @@ npm run dev-build
 * [React](https://reactjs.org/)
 * [MySQL](https://dev.mysql.com/)
 
+## Deployment
+
+This app was deployed using [Heroku](https://dashboard.heroku.com/).
+
 ## Authors
 
 * **Hieu Ho** - *Initial work* - [AmiraVomir](https://github.com/AmiraVomir)
