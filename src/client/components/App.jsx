@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import $ from 'jquery';
-import Post from './Post.jsx';
-import List from './List.jsx';
-
+import Post from './Post';
+import List from './List';
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class App extends Component {
 
     this.state = {
       cows: [],
-      cowInfo: ''
+      cowInfo: '',
     };
 
     this.getCows = this.getCows.bind(this);
@@ -21,116 +20,109 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getCows()
+    this.getCows();
   }
 
   getCows() {
     $.get({
       url: '/api/cows',
-      error: ((err) => {
-        return console.error('AJAX GET FAILED', err)
-      }),
+      error: ((err) => console.error('AJAX GET FAILED', err)),
       success: ((cows) => {
         this.setState({
-          cows: cows
-        })
-      })
-    })
-  };
+          cows,
+        });
+      }),
+    });
+  }
 
   postCows(cow) {
     $.post({
       url: 'api/cows',
-      data: {post: cow},
-      error: ((err) => {
-        return console.error('AJAX POST FAILED', err)
-      }),
+      data: { post: cow },
+      error: ((err) => console.error('AJAX POST FAILED', err)),
       success: ((cow) => {
-        let newCow = this.state.cows.concat([cow]);
+        const newCow = this.state.cows.concat([cow]);
         this.setState({
-          cows: newCow
-        })
-      })
-    })
-  };
+          cows: newCow,
+        });
+      }),
+    });
+  }
 
   updateCow(id) {
-
-    let newName = prompt('rename dis cow');
-    let newDescription = prompt('say sumthin bout ur cow');
-    let cowData = { name: newName, description: newDescription};
+    const newName = prompt('Rename this cow');
+    const newDescription = prompt('Add a description');
+    const cowData = { name: newName, description: newDescription };
 
     if (cowData.name && cowData.description) {
       $.ajax({
         url: `api/cows/${id}`,
         type: 'PUT',
-        data: {post: cowData},
-        error: ((err) => {
-          return console.error('AJAX PUT FAILED',err)
-        }),
+        data: { post: cowData },
+        error: ((err) => console.error('AJAX PUT FAILED', err)),
         success: ((cow) => {
-          alert(`${newName} feels different`)
+          alert(`${newName} feels different`);
           this.setState({
             cows: cow,
-            cowInfo: ''
-          })
-        })
-      })
+            cowInfo: '',
+          });
+        }),
+      });
     }
-  };
+  }
 
   deleteCow(id) {
-
-    let randomString = Math.random().toString(36).toUpperCase().slice(2);
-
-    let confirm = prompt(`do you want steak? enter "${randomString}" to kill`);
+    const randomString = Math.random().toString(36).toUpperCase().slice(2);
+    const confirm = prompt(`Enter "${randomString}" to make steak`);
 
     if (randomString === confirm) {
       $.ajax({
         url: `api/cows/${id}`,
         type: 'DELETE',
-        error: ((err) => {
-          return console.error('AJAX DELETE FAILED!!!', err)
-        }),
+        error: ((err) => console.error('AJAX DELETE FAILED!!!', err)),
         success: ((cow) => {
-          alert('Chik-Fil-A\'s stocks plummeted')
+          alert('Chik-Fil-A\'s stocks plummeted');
           this.setState({
             cows: cow,
-            cowInfo: ''
-          })
-        })
-      })
+            cowInfo: '',
+          });
+        }),
+      });
     } else {
-      alert('can\'t kill dis cow! it\'s too stronk!!!')
+      alert('Its will to live was too strong!');
     }
-  };
+  }
 
   descriptionHandler(cow) {
     this.setState({
-      cowInfo: cow
-    })
+      cowInfo: cow,
+    });
   }
 
-
   render() {
+    const { cowInfo, cows } = this.state;
     return (
       <div>
-        <h1>Hieu's Barn Presents</h1>
+        <h1>Hieu's Barn </h1>
 
-        <div className="description"> {this.state.cowInfo}
+        <div className="description">
+          {' '}
+          {cowInfo}
 
         </div>
 
         <div>
           <Post handlePost={this.postCows} />
-          </div>
+        </div>
 
-          <div>
-            <List cowList={this.state.cows}
-                  description={(cow) => this.descriptionHandler(cow)}
-                  update={(id) => this.updateCow(id)}
-                  delete={(id) => this.deleteCow(id)}/>
-          </div>
+        <div>
+          <List
+            cowList={cows}
+            description={(cow) => this.descriptionHandler(cow)}
+            updateCow={(id) => this.updateCow(id)}
+            deleteCow={(id) => this.deleteCow(id)}
+          />
+        </div>
 
       </div>
     );
