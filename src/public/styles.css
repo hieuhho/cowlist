@@ -10,9 +10,6 @@ body {
   margin: 0;
   justify-content: center;
   background-color: rgb(190, 151, 198);
-  /* background: url("https://i.ytimg.com/vi/GHzXt7Lkm0I/maxresdefault.jpg"); */
-  /* background: url("https://lh3.googleusercontent.com/proxy/KiIoTWtyxWIXbS-2mGMNiTCWbPnt_g5z-8m-KToNA8CJa47qB0OaVB-0frxyPCpwvrv0cGqs5G4sYfHprpK5qNIYWymhqGHp5pSE_vGff-TD7e0Do2smuVEum-cU7Dz3uIe-_IxHjWqO9wSZYIF_I8bwcClgL5eKSsg");
-  background-size: 35%; */
   font-family: "Courier New", Courier, monospace;
 }
 
@@ -29,6 +26,11 @@ form {
   display: flex;
   align-self: center;
   justify-content: center;
+}
+
+input {
+  height: 30px;
+  width: 250px;
 }
 
 li {
@@ -54,7 +56,7 @@ li {
   padding: 5px;
   text-align: center;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 15px;
   box-shadow: 0 0 3px gray;
 }
 
@@ -87,6 +89,7 @@ li {
   padding: 10px;
   margin: 15px 0;
   box-shadow: 0 0 5px gray;
+  font-size: 20px;
 }
 
 
