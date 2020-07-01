@@ -9,6 +9,7 @@ if (process.env.JAWSDB_MARIA_URL) {
   sequelize = new Sequelize('cowList', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
+    logging: false,
   });
 }
 
