@@ -39,7 +39,7 @@ class Post extends Component {
     return (
 
       <div>
-        <form>
+        <form autoComplete="off">
 
           <label className="cowName">
             <input
