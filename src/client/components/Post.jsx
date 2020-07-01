@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Post extends Component {
   constructor(props) {
@@ -7,63 +7,65 @@ class Post extends Component {
     this.state = {
       cowInfo: {
         name: '',
-        description: ''
-      }
-    }
+        description: '',
+      },
+    };
   }
 
   handleChange(propertyName, event) {
-    const cowInfo = this.state.cowInfo;
+    const { cowInfo } = this.state;
     cowInfo[propertyName] = event.target.value;
     this.setState({
-      cowInfo: cowInfo
+      cowInfo,
     });
-  };
+  }
 
   handleCowSubmit(e) {
     e.preventDefault();
-    if(this.state.cowInfo.name.length !== 0 && this.state.cowInfo.description.length !== 0) {
+    const { name, description } = this.state.cowInfo;
+    if (name.length !== 0 && description.length !== 0) {
       this.props.handlePost(this.state.cowInfo);
     }
     this.setState({
       cowInfo: {
         name: '',
-        description: ''
-        }
-    })
-  };
-
+        description: '',
+      },
+    });
+  }
 
   render() {
+    const { name, description } = this.state.cowInfo;
     return (
 
       <div>
-      <form>
+        <form>
 
-        <label className="cowName">
-          <input
-            placeholder="name them cow"
-            type="text"
-            name="name"
-            value={this.state.cowInfo.name}
-            onChange={this.handleChange.bind(this, 'name')}
-          /></label>
+          <label className="cowName">
+            <input
+              placeholder="Name Your Cow"
+              type="text"
+              name="name"
+              value={name}
+              onChange={this.handleChange.bind(this, 'name')}
+            />
+          </label>
 
-        <label className="cowDesc">
-          <input
-            placeholder="describe dat cow"
-            type="text"
-            name="description"
-            value={this.state.cowInfo.description}
-            onChange={this.handleChange.bind(this,'description')} />
+          <label className="cowDesc">
+            <input
+              placeholder="Describe Your Cow"
+              type="text"
+              name="description"
+              value={description}
+              onChange={this.handleChange.bind(this, 'description')}
+            />
+          </label>
 
-        </label>
-          <button className="cowSubmit" onClick={this.handleCowSubmit.bind(this)}>add yo cow</button>
+          <button type="button" className="cowSubmit" onClick={this.handleCowSubmit.bind(this)}>Add to barn</button>
+        </form>
 
-      </form>
-
-    </div>
-    )
+      </div>
+    );
   }
 }
 
